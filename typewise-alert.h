@@ -3,13 +3,15 @@
 typedef enum {
   PASSIVE_COOLING,
   HI_ACTIVE_COOLING,
-  MED_ACTIVE_COOLING
+  MED_ACTIVE_COOLING,
+  noOfCoolingTypes
 } CoolingType;
 
 typedef enum {
   NORMAL,
   TOO_LOW,
-  TOO_HIGH
+  TOO_HIGH,
+  noOfBreachTypes
 } BreachType;
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
