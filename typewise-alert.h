@@ -10,7 +10,7 @@ typedef enum {
 typedef enum {
   NORMAL,
   TOO_LOW,
-  TOO_HIGH.
+  TOO_HIGH,
   noOfBreachTypes
 } BreachType;
 
