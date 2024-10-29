@@ -46,14 +46,10 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
   }
 }
 
-std::string getHeaderString(const int header) {
+std::string getControllerMessage(const int header, BreachType breachType) {
   std::ostringstream headerStringStream;
   headerStringStream << std::hex << header;
-  return (headerStringStream.str());
-}
-
-std::string getControllerMessage(const int header, BreachType breachType) {
-  return (getHeaderString(header) + " : " + std::to_string(breachType) + "\n");
+  return (headerStringStream.str() + " : " + std::to_string(breachType) + "\n");
 }
 
 void sendToController(BreachType breachType) {
@@ -61,15 +57,15 @@ void sendToController(BreachType breachType) {
   printStringToConsole(getControllerMessage(header, breachType));
 }
 
-void setEmailMessage(std::string *message, std::string recepient) {
+std::string getEmailMessage(std::string recepient, BreachType breachType) {
+  std::string message[noOfBreachTypes];
   message[TOO_LOW]  = "To: " +  recepient + "\nHi, the temperature is too low\n";
   message[TOO_HIGH] = "To: " +  recepient + "\nHi, the temperature is too high\n";
   message[NORMAL]   = "";
+  return message[breachType];
 }
 
 void sendToEmail(BreachType breachType) {
   const std::string recepient = "a.b@c.com";
-  std::string message[noOfBreachTypes];
-  setEmailMessage(message, recepient);
-  printStringToConsole(message[breachType]);
+  printStringToConsole(getEmailMessage(recepient, breachType));
 }
