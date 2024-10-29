@@ -3,7 +3,8 @@
 #include "typewise-alert.h"
 
 class mockClass {
-  MOCK_METHOD(void, printStringToConsole, (std::string inputString), ());
+  public:
+    MOCK_METHOD(void, printStringToConsole, (std::string inputString), ());
 };
 
 mockClass* globalMockObject;
