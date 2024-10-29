@@ -1,6 +1,10 @@
 #include "typewise-alert.h"
 #include "typewise-alert.tests.h"
 
+void printStringToConsole(std::string inputString) {
+  globalMockObject->printStringToConsole(inputString);
+}
+
 // void printStringToConsole(std::string inputString) {
 //   std::cout << inputString;
 // }
