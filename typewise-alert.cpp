@@ -1,13 +1,8 @@
 #include "typewise-alert.h"
-#include "typewise-alert.tests.h"
 
 void printStringToConsole(std::string inputString) {
-  globalMockObject->printStringToConsole(inputString);
+  std::cout << inputString;
 }
-
-// void printStringToConsole(std::string inputString) {
-//   std::cout << inputString;
-// }
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
