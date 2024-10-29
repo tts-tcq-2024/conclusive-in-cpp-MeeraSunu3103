@@ -25,6 +25,6 @@ TEST(TypeWiseAlertTestSuite,InfersBreachAccordingToLimits) {
       s += checkAndAlert(alertTarget, battery1, upperLimit[battery1.coolingType]);
       s += checkAndAlert(alertTarget, battery1, (upperLimit[battery1.coolingType] + 1));
     }
-    ASSERT_STREQ(s,expected[i]);
+    EXPECT_EQ((s == expected[i]), 1);
   }
 }
