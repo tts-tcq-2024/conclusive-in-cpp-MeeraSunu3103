@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "typewise-alert.h"
 
 class mockClass {
   public:
