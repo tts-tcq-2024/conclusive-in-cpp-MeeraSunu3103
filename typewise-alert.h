@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <cstring>
+
 typedef enum {
   PASSIVE_COOLING,
   HI_ACTIVE_COOLING,
