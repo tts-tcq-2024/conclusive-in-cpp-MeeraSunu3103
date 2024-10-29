@@ -33,17 +33,22 @@ BreachType classifyTemperatureBreach(CoolingType coolingType, double temperature
   return inferBreach(temperatureInC, lowerLimit[coolingType], upperLimit[coolingType]);
 }
 
-void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
-  BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
-
+std::string getAlertMessage(AlertTarget alertTarget, BreachType breachType) {
   switch(alertTarget) {
     case TO_CONTROLLER:
-      sendToController(breachType);
+      return (sendToController(breachType));
       break;
     case TO_EMAIL:
-      sendToEmail(breachType);
+      return (sendToEmail(breachType));
       break;
   }
+}
+
+std::string checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+  BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
+  std::string alertMessage = getAlertMessage(alertTarget, breachType);
+  printStringToConsole(alertMessage);
+  return alertMessage;
 }
 
 std::string getControllerMessage(const int header, BreachType breachType) {
@@ -52,9 +57,9 @@ std::string getControllerMessage(const int header, BreachType breachType) {
   return (headerStringStream.str() + " : " + std::to_string(breachType) + "\n");
 }
 
-void sendToController(BreachType breachType) {
+std::string sendToController(BreachType breachType) {
   const unsigned short header = 0xfeed;
-  printStringToConsole(getControllerMessage(header, breachType));
+  return (getControllerMessage(header, breachType));
 }
 
 std::string getEmailMessage(std::string recepient, BreachType breachType) {
@@ -65,7 +70,7 @@ std::string getEmailMessage(std::string recepient, BreachType breachType) {
   return message[breachType];
 }
 
-void sendToEmail(BreachType breachType) {
+std::string sendToEmail(BreachType breachType) {
   const std::string recepient = "a.b@c.com";
-  printStringToConsole(getEmailMessage(recepient, breachType));
+  return (getEmailMessage(recepient, breachType));
 }
