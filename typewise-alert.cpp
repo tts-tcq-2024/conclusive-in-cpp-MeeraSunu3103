@@ -1,7 +1,4 @@
 #include "typewise-alert.h"
-#include <stdio.h>
-#include <string>
-#include <iostream>
 
 void printStringToConsole(std::string inputString) {
   std::cout << inputString;
@@ -49,9 +46,19 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
   }
 }
 
+std::string getHeaderString(const int header) {
+  std::ostringstream headerStringStream;
+  headerStringStream << std::hex << header;
+  return (headerStringStream.str());
+}
+
+std::string getControllerMessage(const int header, BreachType breachType) {
+  return (getHeaderString(header) + " : " + std::to_string(breachType) + "\n");
+}
+
 void sendToController(BreachType breachType) {
   const unsigned short header = 0xfeed;
-  printf("%x : %x\n", header, breachType);
+  printStringToConsole(getControllerMessage(header, breachType));
 }
 
 void setEmailMessage(std::string *message, std::string recepient) {
