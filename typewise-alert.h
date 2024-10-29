@@ -36,3 +36,5 @@ std::string checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar,
 
 std::string sendToController(BreachType breachType);
 std::string sendToEmail(BreachType breachType);
+
+void setLowerAndUpperLimits(int lowerLimitList[] ,int upperLimitList[]);
