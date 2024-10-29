@@ -29,11 +29,10 @@ typedef enum {
 
 typedef struct {
   CoolingType coolingType;
-  char brand[48];
+  std::string brand;
 } BatteryCharacter;
 
-void checkAndAlert(
-  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
+std::string checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
-void sendToController(BreachType breachType);
-void sendToEmail(BreachType breachType);
+std::string sendToController(BreachType breachType);
+std::string sendToEmail(BreachType breachType);
