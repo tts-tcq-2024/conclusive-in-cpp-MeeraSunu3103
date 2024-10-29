@@ -7,7 +7,3 @@ class mockClass {
 };
 
 mockClass* globalMockObject;
-
-void printStringToConsole(std::string inputString) {
-  globalMockObject->printStringToConsole(inputString);
-}
