@@ -2,7 +2,7 @@
 #include "typewise-alert.h"
 
 
-TEST(TypeWiseAlertTestSuite,InfersBreachAccordingToLimits) {
+TEST(TypeWiseAlertTestSuite,TypeWiseAlertTestsWithAllCombinations) {
   BatteryCharacter battery1;
   battery1.coolingType = HI_ACTIVE_COOLING;
   std::string s = "";//checkAndAlert(TO_EMAIL, battery1, 85);
